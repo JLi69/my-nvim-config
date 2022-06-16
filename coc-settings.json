@@ -1,0 +1,70 @@
+{
+	"languageserver": 
+	{
+		"ccls": 
+		{
+			"command": "ccls",
+			"filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp", "h", "hpp"],
+			"rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+			"initializationOptions": 
+			{
+			    "cache": 
+				{
+					"directory": "/tmp/ccls"
+				},
+				"highlight": { "lsRanges": true }
+			},
+			
+			"cquery":
+			{
+				"command": "cquery",
+				"args": ["--log-file=/tmp/cq.log"],
+				"filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp", "h", "hpp"]
+,
+				"rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+				"initializationOptions":
+				{
+					"cahceDirectory": "/tmp/cquery",
+					"highlight": { "enabled": true },
+					"emitInactiveRegions": true
+				}
+			}
+		}
+	},
+
+	"coc":
+	{
+		"source":
+		{
+			"around":
+			{
+				"enable": 0
+			},
+
+			"buffer":
+			{
+				"enable": 0	
+			},
+
+			"file":
+			{
+				"enable": 0
+			}
+		}	
+	},
+
+	"suggest":
+	{
+		"maxCompleteItemCount": 12
+	},
+
+	"initializationOptions":
+	{
+		"index":
+		{
+			"onChange": true
+		},
+
+		"hightlight": { "lsRanges" : true }
+	}
+}
