@@ -19,58 +19,32 @@ set ttyfast                 " Speed up scrolling in Vim
 set guifont=Hack:h12
 
 call plug#begin("~/.config/nvim/autoload")
-	" Plug 'tomasiser/vim-code-dark'
-	Plug 'dracula/vim', { 'as': 'dracula' }	
-	Plug 'SirVer/ultisnips'
-	Plug 'preservim/nerdcommenter'
-	Plug 'neoclide/coc.nvim', { 'branch' : 'release' }
-	Plug 'scrooloose/nerdtree', {'on' : 'NERDTreeToggle'}
+	Plug 'ryanoasis/vim-devicons' " Icons	
+	Plug 'tomasiser/vim-code-dark' " Color theme		
+	Plug 'neoclide/coc.nvim', { 'branch' : 'release' } " Intellisense
+	Plug 'scrooloose/nerdtree', {'on' : 'NERDTreeToggle'} " Nerdtree
 	Plug 'mhinz/vim-startify' " cool start menu
-	Plug 'beyondmarc/glsl.vim' " glsl syntax highlighting
-	Plug 'zhamlin/tiler.vim'	
-	Plug 'jackguo380/vim-lsp-cxx-highlight'
-	Plug 'pacha/vem-tabline'
-	Plug 'ryanoasis/vim-devicons'
+	Plug 'beyondmarc/glsl.vim' " glsl syntax highlighting	
+	Plug 'jackguo380/vim-lsp-cxx-highlight' " Intellisense Syntax highlighting
+	Plug 'pacha/vem-tabline' " Tabs	
 call plug#end()
 
-" Vem tabline config
-let g:vem_tabline_show = 2
+" Plugin configs
+so $HOME/.config/nvim/plug-config/codedark.vim
+so $HOME/.config/nvim/plug-config/nerdtree.vim
+so $HOME/.config/nvim/plug-config/startify.vim
+so $HOME/.config/nvim/plug-config/glsl.vim
 
-" VSCode theme
-" let g:codedark_conservative = 0
+" Keybindings
+so $HOME/.config/nvim/keybinds.vim
+
 " Set up the syntax colors and theme
 if(has("termguicolors"))
 	set termguicolors
 endif
-
+" enable the colorscheme
 syntax enable
-colorscheme dracula
-
-
-" Remap window switching keys to something more convenient
-nnoremap <C-H> <C-W>h
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
-
-" Map F to focus a window
-map <C-F> :TilerFocus<CR>
-
-" map the F2 key to open the NERD file explorer
-map <F2> :NERDTreeToggle<CR>
-
-" Set the default glsl version
-let g:glsl_default_version = 'glsl430'
-
-" Configure the startify start menu
-let g:startify_lists = [
-	\ { 'header' : ['   MRU'], 'type' : 'files' }
-  \ ]
-let g:startify_fortune_use_unicode = 1
-
-" Set internal encoding of vim, not needed on neovim, since coc.nvim using some
-" unicode characters in the file autoload/float.vim
-set encoding=UTF-8
+colorscheme codedark 
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -103,27 +77,5 @@ let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
 
-" Taboo
-" set guioptions-=e
-
-map <C-T> :tabnew<CR>
-map <C-W> :bd<CR>
-map <C-A> :bprev<CR>
-map <C-D> :bnext<CR>
-
-" CTRL + S to save file
-map <C-S> :w<CR>
-
-" Vem Tabline color scheme
-highlight VemTablineNormal           term=reverse cterm=none guifg=#FFFFFF guibg=#242424 gui=none
-highlight VemTablineNumber           term=reverse cterm=none guifg=#FFFFFF guibg=#555555 gui=none
-highlight VemTablineSelected         term=bold    cterm=bold guifg=#242424 guibg=#FFFFFF gui=bold
-highlight VemTablineLocationSelected term=bold    cterm=none guifg=#242424 guibg=#FFFFFF gui=bold
-highlight VemTablineNumberSelected   term=bold    cterm=none guifg=#242424 guibg=#FFFFFF gui=bold
-highlight VemTablineShown            term=reverse cterm=none guifg=#FFFFFF guibg=#555555 gui=none
-highlight VemTablineLocationShown    term=reverse cterm=none guifg=#FFFFFF guibg=#555555 gui=none
-highlight VemTablineNumberShown      term=reverse cterm=none guifg=#FFFFFF guibg=#555555 gui=none
-highlight VemTablineSeparator        term=reverse cterm=none guifg=#FFFFFF guibg=#555555 gui=none
-highlight VemTablinePartialName      term=reverse cterm=none guifg=#FFFFFF guibg=#555555 gui=none
-highlight VemTablineTabNormal        term=reverse cterm=none guifg=#FFFFFF guibg=#555555 gui=none
-highlight VemTablineTabSelected      term=bold    cterm=bold guifg=#242424 guibg=#FFFFFF gui=bold
+" vem tabline colors/config
+so $HOME/.config/nvim/plug-config/vemtabline.vim
